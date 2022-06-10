@@ -84,3 +84,9 @@ becomes even more expressive.
   - Sub-graphs may represent sub-departments (or users who like to share with like minded colleagues)
   - The red circles may hint of a potential ex-filtration of data
 
+## Credits
+
+Mike Bostock, [observablehq.com](https://observablehq.com/) and all
+contributors to the 3Djs framework. All I did here is adapt one of their
+examples to my own data and customize some parameters for better effect.
+
