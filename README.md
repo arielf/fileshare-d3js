@@ -1,18 +1,19 @@
-# A demo of D3js force-directed graph
+# D3js force-directed graph on cloud file-sharing
 
-In the demo below: the graph shows cloud file-sharing-activity
-in an organization during a 1 day period.
+We demo a graph of cloud file-sharing events in an organization over 1 day.
 
-We have two kinds of entities (users + files) and one kind of
-relationship (file sharing). This can be generalized to more entities
-and/or relationships.
+In our setting, we have two kinds of entities: users + files,
+and one kind of relationship: file sharing.
 
-While the original raw data was curated from a real cloud activity log,
-all the data is anonymized. No real/actual user or file names are exposed.
+This can be generalized to more entities and relationships.
+
+The original raw data was curated from real cloud activity log.
+
+The data is anonymized. No real/actual user or file names are exposed.
 
 <!-- iframe src="./index.html">Interactive force-directed chart</iframe -->
 
-[Interactive Demo (can't embed so not on github)](https://finance.yendor.com/ML/fileshare-3djs/)
+[Interactive Demo (can't embed, so not on github)](https://finance.yendor.com/ML/fileshare-3djs/)
 
 [Source code for demo](./index.html)
 
