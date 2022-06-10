@@ -12,8 +12,9 @@ All data is anonymized. No real/actual user or file names are exposed.
 While the original raw data was curated from a real cloud activity log,
 all data is anonymized. No real/actual user or file names are exposed.
 
-<-- iframe src="./index.html">Interactive force-directed chart</iframe -->
-![](./demo.svg)
+<!-- iframe src="./index.html">Interactive force-directed chart</iframe -->
+
+![Click here to see the demo](./index.html)
 
 ## Graphical elements
 
