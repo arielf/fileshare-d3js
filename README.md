@@ -15,7 +15,11 @@ The data is anonymized. No real/actual user or file names are exposed.
 
 [Interactive Demo (can't embed, so not on github)](https://finance.yendor.com/ML/fileshare-d3js/)
 
-[Source code for demo](./index.html)
+## Demo source code:
+
+  - [index.html](./index.html)
+  - [force-directed-graph.js](./force-directed-graph.js)
+
 
 ## Graphical elements
 
