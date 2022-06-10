@@ -24,13 +24,13 @@ The data is anonymized. No real/actual user or file names are exposed.
 ## Graphical elements
 
   - Blue circles represent files
-  - Black circles represent users from a certain organization
-  - Red circles represent users outside the organization (email-id has another domain)
-  - Edges are always between a (shared) file and two users
+  - Black circles represent users in an organization
+  - Red circles represent users outside the organization (email-id in another domain)
+  - Edges are always between a user and a (shared) file
   - Thicker edges represent multiple sharing events
-  - Each user or file (unique id) appears exactly once in the chart
+  - Each user/file has a unique id and appears exactly once in the chart
   - The entities (file, user) are what the forces act on
-  - The relations between the entities are the forces
+  - The relations between the entities are the forces acting on entities
 
 ## Interacting with the graph
 
