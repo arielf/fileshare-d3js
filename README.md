@@ -16,6 +16,8 @@ all data is anonymized. No real/actual user or file names are exposed.
 
 [Interactive Demo (not on github)](https://finance.yendor.com/ML/fileshare-3djs/)
 
+[Source code for demo](./index.html)
+
 ## Graphical elements
 
   - Blue circles represent files
