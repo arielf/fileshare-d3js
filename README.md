@@ -13,7 +13,7 @@ The data is anonymized. No real/actual user or file names are exposed.
 
 <!-- iframe src="./index.html">Interactive force-directed chart</iframe -->
 
-[Interactive Demo (can't embed, so not on github)](https://finance.yendor.com/ML/fileshare-3djs/)
+[Interactive Demo (can't embed, so not on github)](https://finance.yendor.com/ML/fileshare-d3js/)
 
 [Source code for demo](./index.html)
 
