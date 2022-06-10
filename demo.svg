@@ -1,9 +1,12 @@
 <svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
 <foreignObject width="1000" height="1000">
+<div>
 <iframe id="interactive-demo"
       title="Interactive Demo"
       width="1000" height="1000"
-      src="index.html">
+      frameborder="0" style="border:0"
+      src="./index.html">
 </iframe>
+</div>
 </foreignObject>
 </svg>
