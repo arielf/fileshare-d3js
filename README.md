@@ -1,4 +1,4 @@
-# A demo of 3Djs force-directed graph
+# A demo of D3js force-directed graph
 
 In the demo below: the graph shows cloud file-sharing-activity
 in an organization during a 1 day period.
@@ -87,6 +87,6 @@ becomes even more expressive.
 ## Credits
 
 Mike Bostock, [observablehq.com](https://observablehq.com/) and all
-contributors to the 3Djs framework. All I did here is adapt one of their
+contributors to the D3js framework. All I did here is adapt one of their
 examples to my own data and customize some parameters for better effect.
 
