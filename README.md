@@ -14,7 +14,7 @@ all data is anonymized. No real/actual user or file names are exposed.
 
 <!-- iframe src="./index.html">Interactive force-directed chart</iframe -->
 
-[Interactive Demo (not on github)](https://finance.yendor.com/ML/fileshare-3djs/)
+[Interactive Demo (can't embed so not on github)](https://finance.yendor.com/ML/fileshare-3djs/)
 
 [Source code for demo](./index.html)
 
@@ -88,5 +88,5 @@ becomes even more expressive.
 
 Mike Bostock, [observablehq.com](https://observablehq.com/) and all
 contributors to the D3js framework. All I did here is adapt one of their
-examples to my own data and customize some parameters for better effect.
-
+examples to a different dataset, separate the raw data from the code,
+and customize some parameters for better effect.
