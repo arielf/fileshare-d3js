@@ -14,7 +14,7 @@ all data is anonymized. No real/actual user or file names are exposed.
 
 <!-- iframe src="./index.html">Interactive force-directed chart</iframe -->
 
-![Click here to see the demo](./index.html)
+![Click here to see the demo](https://finance.yendor.com/ML/fileshare-3djs/)
 
 ## Graphical elements
 
