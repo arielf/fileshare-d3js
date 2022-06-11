@@ -5,9 +5,9 @@ We demo a graph of cloud file-sharing events in an organization over 1 day.
 In our setting, we have two kinds of entities: users + files,
 and one kind of relationship: file sharing.
 
-This can be generalized to more entities and relationships.
+The idea can be generalized to other entities and/or relationships.
 
-The original raw data was curated from real cloud activity log.
+The original raw-data comes from a real cloud-activity log.
 
 The data is anonymized. No real/actual user or file names are exposed.
 
@@ -24,7 +24,7 @@ The data is anonymized. No real/actual user or file names are exposed.
 ## Graphical elements
 
   - Blue circles represent files
-  - Black circles represent users in an organization
+  - Black circles represent users
   - Red circles represent users outside the organization (email-id in another domain)
   - Edges are always between a user and a (shared) file
   - Thicker edges represent multiple sharing events
@@ -34,8 +34,8 @@ The data is anonymized. No real/actual user or file names are exposed.
 
 ## Interacting with the graph
 
-  - Hover over circles to see the (anonymized) user-ids or file-ids
-  - Click and drag any circle; the graph self-organizes again
+  - Hover over circles to see the (anonymized) user/file ids
+  - Click and drag some circle; the graph self-organizes again
   - Try to untangle some knots
   - Watch how the graph reacts when you release your mouse button
   - Click & drag an isolated small sub-graph over a long distance
@@ -46,7 +46,8 @@ The data is anonymized. No real/actual user or file names are exposed.
 The forces that make this graph self-organize are very much like the
 negative and positive charges in polar molecules. E.g. in a water
 (`H2O`) molecule, there's a 104.5 &deg; angle between the `H-0-H`
-bonds making the molecule polar.
+bonds. The asymmetry makes each molecule a small dipole with
+one positive and one negative side.
 
   - Opposite charges (a user & a file) attract each other
   - Similar charges (two files, or two users) repel each other
@@ -58,21 +59,21 @@ Whenever disturbed, the graph settles into a new state of equilibrium.
 
 Force related constants which affect the speed of settling into
 equilibrium, the friction or "stiffness" of the chart, and others,
-are configured in the code.
+can be configured in the code.
 
 In a sense: the data computes itself into a picture that makes
 relationships very clear to the observer.
 
 Think of it this way, without any sharing, all users are unrelated to
-each other. If two users share files among themselves, they are going to
-be globally attracted to these files and end up close to each other. But
-because users repel each other, the files end-up between the users that
-share them, plus the files will repel each other so they don't all
-appear at one point.
+each other. When two users share files among themselves, they are
+globally attracted to these files and end up close to each other.
+But because users repel each other, the files end-up between the users
+that share them, plus the files will repel each other so they don't
+all appear on top of each other.
 
-In this particular demo, I made the repelling force for files
-be somewhat weaker than the repelling force between users because the
-number of files is larger than the number of users.
+In this particular demo, the repelling force for files is somewhat
+weaker than the repelling force between users because the number
+of files is larger than the number of users.
 
 
 ## A picture is worth a 1000 words
@@ -94,3 +95,8 @@ Mike Bostock, [observablehq.com](https://observablehq.com/) and all
 contributors to the D3js framework. All I did here is adapt one of their
 examples to a different dataset, separate the raw data from the code,
 and customize some parameters for better effect.
+
+## Final note
+
+The demo uses an old version (v3) of D3js, that is incompatible
+with the current (v7) version.
