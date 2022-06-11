@@ -41,11 +41,12 @@ The data is anonymized. No real/actual user or file names are exposed.
   - Click & drag an isolated small sub-graph over a long distance
   - Release & watch it settle in a new niche
 
-## What exactly is a self-directed graph?
+## What exactly is a force-directed graph?
 
 The forces that make this graph self-organize are very much like the
-negative and positive charges in polar molecules, like water (H2O, 108
-degrees angle between H-0-H):
+negative and positive charges in polar molecules. E.g. in a water
+(`H2O`) molecule, there's a 104.5 &deg; angle between the `H-0-H`
+bonds making the molecule polar.
 
   - Opposite charges (a user & a file) attract each other
   - Similar charges (two files, or two users) repel each other
