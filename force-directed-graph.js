@@ -109,7 +109,7 @@ d3.json("datobj.json", function(error, graph) {
         div.html(d.name)
             .style("left", (d3.event.pageX + 14) + "px")
             .style("top", (d3.event.pageY - 30) + "px")
-            .style("color", "#ffffff");
+            ;
     })
     .on("mouseout", function(d) {
         div.transition()
