@@ -52,42 +52,59 @@ molecule a small dipole.
   - Opposite charges (a user & a file) attract each other
   - Similar charges (two files, or two users) repel each other
 
-The attraction & repulsion cause the chart to self organize into
-a minimum (potential) energy state.
+The attraction & repulsion cause the chart to self-organize into
+a minimum potential-energy state.
 
 Whenever disturbed, the graph settles into a new state of equilibrium.
 
-Force related constants which affect the speed of settling into
-equilibrium, the friction or "stiffness" of the chart, and others,
-can be configured in the code.
+## Why is a force-directed graph valuable?
 
-In a sense: the data computes itself into a picture that makes
-relationships very clear to the observer.
+The biggest value of a force-directed visualization is that
+it creates a ***meaningful global holistic view*** from many
+***small & unrelated local details***.
 
-Think of it this way, without any sharing, all users are unrelated to
-each other and will float randomly in space. When two users share files
-among themselves, they are globally attracted to these files and end up
-close to each other. But because users repel each other, the files
-end-up between the users that share them. Plus, the files will repel
-each other so they don't all appear on top of each other.
+There’s no model we need to build based on any pre-conceived
+structure. The whole is a natural and direct result of its small parts.
 
-In this particular demo, the repelling force for users is set
-to be stronger than the repelling force between files,
-because the number of users is much smaller than the number
-of files and we want users to be spread more apart.
+IOW: the ***data computes itself into a picture*** that makes
+all relationships very clear to the observer.
 
 ## A picture is worth a 1000 words
 
-A self-organizing picture, with which you can interact,
-becomes even more expressive.
+So the saying goes, but a self-organizing picture, which creates
+itself, and with which you can interact, may bring even more
+insight and understanding.
 
-## The graph may tell many stories:
+## The graph tells many stories:
 
   - Some users share much more than others
   - Some small cliques of users as islands in the big picture
   - Some users share files only one person
+  - Some teams are formed around single shared files, others have large
+    shared file-sets.
   - Sub-graphs may represent sub-departments (or users who like to share with like minded colleagues)
-  - The red circles may hint of a potential ex-filtration of data
+  - Red circles may hint of a potential ex-filtration of data
+
+## Random notes
+
+  - In this particular demo, the repelling force for users is set
+  to be stronger than the repelling force between files,
+  because the number of users is much smaller than the number
+  of files so we want users to be spread more apart than files.
+
+  - Force related constants which affect the speed of settling into
+  equilibrium, the friction or "stiffness" of the chart, and others,
+  can be configured in the code.
+
+  - Without any sharing, all users are unrelated to each other and will
+  float randomly in space. When two users share files among themselves,
+  they become globally attracted to these files and end-up closer to
+  each other. But because users repel each other, the files
+  end-up between the users that share them. Plus, the files repel
+  each other as well, so they don't all appear on top of each other.
+
+  - The demo uses an old version (v3) of D3js, that is incompatible
+  with the current (v7) version.
 
 ## Credits
 
@@ -96,7 +113,3 @@ contributors to the D3js framework. All I did here is adapt one of their
 examples to a different dataset, separate the raw data from the code,
 and customize some parameters for better effect.
 
-## Final note
-
-The demo uses an old version (v3) of D3js, that is incompatible
-with the current (v7) version.
