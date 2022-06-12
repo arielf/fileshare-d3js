@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
+body {
+    font-size: 48px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
 .node {
     stroke: #ffffff;
     stroke-width: 1.75px;
@@ -12,13 +18,42 @@
     stroke-opacity: .7;
 }
 
-body {
-    font-size: 48px;
-    font-family: sans-serif;
-    font-weight: bold;
+/*
+path {
+    stroke: blue;
+    stroke-width: 2;
+    fill: none;
 }
+
+.axis path, .axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+*/
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 120px;
+    height: 36px;
+    padding: 4px;
+    font: 24px sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    background: #000;
+    color: #fff;
+    /* border: 4px;
+    border-color: #fff; */
+    border-radius: 10px;
+    pointer-events: none;
+}
+
 </style>
 
+<!-- script type="text/javascript" src="d3.v7.min.js" charset="utf-8"></script -->
+<!-- script src="https://d3js.org/d3.v7.min.js"></script -->
 <script type="text/javascript" src="d3.v3.min.js" charset="utf-8"></script>
 
 <body>
