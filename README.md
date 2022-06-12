@@ -9,7 +9,7 @@ The idea can be generalized to other entities and/or relationships.
 
 The original raw-data comes from a real cloud-activity log.
 
-The data is anonymized. No real/actual user or file names are exposed.
+All data is anonymized. No actual user/file names are exposed.
 
 <!-- iframe src="./index.html">Interactive force-directed chart</iframe -->
 
@@ -45,9 +45,9 @@ The data is anonymized. No real/actual user or file names are exposed.
 
 The forces that make this graph self-organize are very much like the
 negative and positive charges in polar molecules. E.g. in a water
-(`H2O`) molecule, there's a 104.5 &deg; angle between the `H-0-H`
-bonds. The asymmetry makes each molecule a small dipole with
-one positive and one negative side.
+(`H2O`) molecule, there's a 104.5 &deg; (less than 180 &deg;) angle
+between the two `H-0-H` covalent bonds. The asymmetry makes each
+molecule a small dipole.
 
   - Opposite charges (a user & a file) attract each other
   - Similar charges (two files, or two users) repel each other
@@ -65,16 +65,16 @@ In a sense: the data computes itself into a picture that makes
 relationships very clear to the observer.
 
 Think of it this way, without any sharing, all users are unrelated to
-each other. When two users share files among themselves, they are
-globally attracted to these files and end up close to each other.
-But because users repel each other, the files end-up between the users
-that share them, plus the files will repel each other so they don't
-all appear on top of each other.
+each other and will float randomly in space. When two users share files
+among themselves, they are globally attracted to these files and end up
+close to each other. But because users repel each other, the files
+end-up between the users that share them. Plus, the files will repel
+each other so they don't all appear on top of each other.
 
-In this particular demo, the repelling force for files is somewhat
-weaker than the repelling force between users because the number
-of files is larger than the number of users.
-
+In this particular demo, the repelling force for users is set
+to be stronger than the repelling force between files,
+because the number of users is much smaller than the number
+of files and we want users to be spread more apart.
 
 ## A picture is worth a 1000 words
 
