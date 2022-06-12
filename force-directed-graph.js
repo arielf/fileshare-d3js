@@ -3,6 +3,7 @@ var Width = 1024, Height = 1024;
 var LinkLen = Width/50;
 
 var FS = "24px";
+var TOOLTIP_FS = "48px";
 
 // Highlight users with a different group among file-sharers
 // (These are marked as group == 3 in datobj.json)
@@ -22,37 +23,9 @@ var UserNodeColor = "#000000";
 var BadUserNodeColor = "#ff0000";
 var UndefUserNodeColor = "#ff00ff";
 
-// define the div for the tooltips
-var div = d3.select("body").append("div")
-    .attr("class", "ui-tooltip")
-        .style("color", "#ffffff")
-        .style("background-color", "#000000")
-        .style("text-align", "center")
-        .style("font-size", FS)
-        .style("font-weight", "bold")
-;
-
-var fixfont = function() {
-    d3.select("ui-tooltip")
-        .style("font-size", FS)
-        .style("font-weight", "bold")
-        .style("color", "#ffffff")
-        .style("background-color", "#000000")
-        .style("text-align", "center")
-        .style("opacity", 1.0)
-    ;
-    div.html("")
-        .style("left", (d3.event.pageX) + "px")
-        .style("top", (d3.event.pageY - 28) + "px")
-        .style("font-size", FS)
-        .style("font-weight", "bold")
-        .style("color", "#ffffff")
-        .style("background-color", "#000000")
-        .style("text-align", "center")
-        .style("opacity", 1.0)
-    ;
-}
-;
+var margin = {top: 0, right: 0, bottom: 0, left: 0},
+    width = Width - margin.left - margin.right,
+    height = Height - margin.top - margin.bottom;
 
 var bad_app = function(d) {
     return !(typeof d.app === 'undefined');
@@ -78,9 +51,19 @@ var force = d3.layout.force()
     // .gravity(0.1)
     ;
 
-var svg = d3.select("body").append("svg")
-    .attr("width", Width)
-    .attr("height", Height)
+// define the div for tooltips
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+// Add the SVG canvas
+var svg = d3.select("body")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")")
     ;
 
 d3.json("datobj.json", function(error, graph) {
@@ -119,16 +102,16 @@ d3.json("datobj.json", function(error, graph) {
             return UndefUserNodeColor;
     })
     .on("mouseover", function(d) {
-        // d3.timer.flush();
         div.transition()
             .delay(0)
             .duration(0)
             .style("opacity", 1.0)
-        ;
-        // fixfont();
+        div.html(d.name)
+            .style("left", (d3.event.pageX + 14) + "px")
+            .style("top", (d3.event.pageY - 30) + "px")
+            .style("color", "#ffffff");
     })
     .on("mouseout", function(d) {
-        // d3.timer.flush();
         div.transition()
             .delay(0)
             .duration(0)
@@ -137,15 +120,6 @@ d3.json("datobj.json", function(error, graph) {
     })
 
     .call(force.drag)
-    ;
-
-    node.append("title")
-        .text(function(d) {
-            return d.name;
-        })
-        .style("font-weight", "bold")
-        .style("font-size", FS)
-        .style("color", "#ffffff")
     ;
 
     force.on("tick", function() {
