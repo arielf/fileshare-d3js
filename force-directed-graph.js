@@ -1,23 +1,20 @@
 "use strict";
 var Width = 1024, Height = 1024;
-var LinkLen = Width/50;
+var LinkLen = Width/60;
 
-var FS = "24px";
-var TOOLTIP_FS = "48px";
-
-// Highlight users with a different group among file-sharers
-// (These are marked as group == 3 in datobj.json)
+// Bad* vars are there to highlight users with a different group
+// among file-sharers (group == 3 in datobj.json)
 
 // Links style
-var LinkColor = "#999999";
-var LinkWidth = 3;
+var LinkColor = "#333333";
+var LinkWidth = 2;
 var BadLinkColor = "#000000";
 var BadLinkWidth = 12;
 
 // Nodes style
 var FileNodeSize = 9;
 var UserNodeSize = 12;
-var BadUserNodeSize = 20;
+var BadUserNodeSize = 16;
 var FileNodeColor = "#33bbff";
 var UserNodeColor = "#000000";
 var BadUserNodeColor = "#ff0000";
@@ -42,6 +39,22 @@ var app_color = function(d) {
 
 var force = d3.layout.force()
     .size([Width, Height])
+    // charge:
+    //      (Negative) charge determines repulsion
+    //      Effect is opposite of gravity (between two nodes)
+    // linkStrength:
+    //      pulls two negative charges closer together
+    //      0.1 keeps them far apart
+    // friction:
+    //      Makes the graph movement stiffer & more resistant to change when disturbed,
+    // gravity:
+    //      Global gravity force: pulls everything towards the center
+    //         - If set to 1.0, everything becomes one big concentrated blob
+    //         - If set to 0.0, blobs of nodes remain detached / outside the canvas
+    //      default is about 0.1
+    // linkDistance:
+    // chargeDistance:
+    // theta:
     .charge(-45)
     .linkDistance(LinkLen)
     // .linkStrength(1.0)
