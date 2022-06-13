@@ -84,6 +84,7 @@ insight and understanding.
     shared file-sets.
   - Sub-graphs may represent sub-departments (or users who like to share with like minded colleagues)
   - Red circles may hint of a potential ex-filtration of data
+  - There's an isolated file (File 499), likely a data issue
 
 ## Random notes
 
