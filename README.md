@@ -27,7 +27,7 @@ All data is anonymized. No actual user/file names are exposed.
   - Black circles represent users
   - Red circles represent users outside the organization (email-id in another domain)
   - Edges are always between a user and a (shared) file
-  - Thicker edges represent multiple sharing events
+  - A red & thick edge represents sharing via an unusual/rare application
   - Each user/file has a unique id and appears exactly once in the chart
   - The entities (file, user) are what the forces act on
   - The relations between the entities are the forces acting on entities
