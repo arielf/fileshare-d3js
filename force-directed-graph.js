@@ -15,7 +15,7 @@ var BadLinkWidth = 12;
 var FileNodeSize = 9;
 var UserNodeSize = 12;
 var BadUserNodeSize = 16;
-var FileNodeColor = "#33bbff";
+var FileNodeColor = "#00aaff";
 var UserNodeColor = "#000000";
 var BadUserNodeColor = "#ff0000";
 var UndefUserNodeColor = "#ff00ff";
@@ -61,7 +61,7 @@ var force = d3.layout.force()
     // .friction(0.9)
     // .chargeDistance(Width/2.0)
     .theta(0.7)
-    // .gravity(0.1)
+    .gravity(0.15)
     ;
 
 // define the div for tooltips

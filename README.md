@@ -108,15 +108,15 @@ insight and understanding.
   of files so we want users to be spread more apart than files.
 
   - Force related constants which affect the speed of settling into
-  equilibrium, the friction or "stiffness" of the chart, and others,
-  can be configured in the code.
+  equilibrium (time-decay or theta), the global gravity force,
+  the link stand-off lengths, the friction or "stiffness" of the chart,
+  and others, can be configured in the code.
 
   - Without any sharing, all users are unrelated to each other and will
   float randomly in space. When two users share files among themselves,
   they become globally attracted to these files and end-up closer to
-  each other. But because users repel each other, the files
-  end-up between the users that share them. Plus, the files repel
-  each other as well, so they don't all appear on top of each other.
+  each other. The more files are shared between two users, the harder
+  it becomes to pull them apart.
 
   - The demo uses an old version (v3) of D3js, that is incompatible
   with the current (v7) version.
