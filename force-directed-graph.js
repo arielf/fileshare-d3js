@@ -8,8 +8,8 @@ var LinkLen = Width/60;
 // Links style
 var LinkColor = "#333333";
 var LinkWidth = 2;
-var BadLinkColor = "#000000";
-var BadLinkWidth = 12;
+var BadLinkColor = "#ff0000";
+var BadLinkWidth = 10;
 
 // Nodes style
 var FileNodeSize = 9;
@@ -25,6 +25,7 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
     height = Height - margin.top - margin.bottom;
 
 var bad_app = function(d) {
+    // A specific app: <int> value in the data
     return !(typeof d.app === 'undefined');
 };
 
@@ -94,8 +95,9 @@ d3.json("datobj.json", function(error, graph) {
       .data(graph.links)
       .enter().append("line")
       .attr("class", "link")
-      .style("fill", function(d) { return app_color(d) })
+      .style("stroke", function(d) { return app_color(d) })
       .style("stroke-width", function(d) { return app_width(d) })
+      .style("fill", function(d) { return app_color(d) })
       ;
 
   var node = svg.selectAll(".node")
