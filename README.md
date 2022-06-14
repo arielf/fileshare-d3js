@@ -51,11 +51,17 @@ molecule a small dipole.
 
   - Opposite charges (a user & a file) attract each other
   - Similar charges (two files, or two users) repel each other
+  - A global force: `gravity` pulls all objects towards the center of the canvas
+  - A link-length (stand-off) parameter keeps linked objects from merging/colliding
+  - A time-decay parameter gradually dampens forces as the graph settles
 
-The attraction & repulsion cause the chart to self-organize into
+The attraction & repulsion forces cause the chart to self-organize into
 a minimum potential-energy state.
 
-Whenever disturbed, the graph settles into a new state of equilibrium.
+Whenever disturbed, the time-decay parameter is reinitialized
+to a high value, the forces increase, and the graph gradually
+settles into a new state of equilibrium as the time-decay parameter
+re-converges towards zero.
 
 ## Why is a force-directed graph valuable?
 
@@ -63,11 +69,19 @@ The biggest value of a force-directed visualization is that
 it creates a ***meaningful global holistic view*** from many
 ***small & unrelated local details***.
 
-There’s no model we need to build based on any pre-conceived
+There’s no model we need to build based on some pre-conceived
 structure. The whole is a natural and direct result of its small parts.
 
 IOW: the ***data computes itself into a picture*** that makes
 all relationships very clear to the observer.
+
+Another way to look at this method is that it reverses the
+traditional roles of client and server in ML.
+Normally, we train a machine-learning model on the server,
+and present the final results to the client.
+Here we’re doing the opposite: we have pure
+***client-side (JavaScript in the browser) machine-learning***.
+The computation heavy-lifting is off-loaded to the observer CPU.
 
 ## A picture is worth a 1000 words
 
