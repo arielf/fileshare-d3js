@@ -98,14 +98,14 @@ insight and understanding.
     shared file-sets.
   - Sub-graphs may represent sub-departments (or users who like to share with like minded colleagues)
   - Red circles may hint of a potential ex-filtration of data
+  - Red links represent abnormal (non-sanctioned) sharing cloud apps
   - There's an isolated file (File 499), likely a data issue
 
 ## Random notes
 
-  - In this particular demo, the repelling force for users is set
-  to be stronger than the repelling force between files,
-  because the number of users is much smaller than the number
-  of files so we want users to be spread more apart than files.
+  - Graph object can be annotated to include more information
+  in the (hover) tool-tips: for examples we can add date and application
+  related to each file sharing, we can annotate the links as well.
 
   - Force related constants which affect the speed of settling into
   equilibrium (time-decay or theta), the global gravity force,
