@@ -9,7 +9,7 @@ var LinkLen = Width/60;
 var LinkColor = "#333333";
 var LinkWidth = 2;
 var BadLinkColor = "#ff0000";
-var BadLinkWidth = 10;
+var BadLinkWidth = 6;
 
 // Nodes style
 var FileNodeSize = 9;
