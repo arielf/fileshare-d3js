@@ -40,28 +40,48 @@ var app_color = function(d) {
 
 var force = d3.layout.force()
     .size([Width, Height])
-    // charge:
+    //
+    //  Official docs:
+    //      https://github.com/d3/d3-force/tree/v3.0.0
+    //      https://d3-wiki.readthedocs.io/zh_CN/master/Force-Layout/
+    //      https://en.wikipedia.org/wiki/Verlet_integration
+    //
+    //  Default settings:
+    //      size 1×1
+    //      linkStrength 1
+    //      friction 0.9
+    //      distance 20
+    //      charge -30
+    //      gravity 0.1
+    //      theta 0.8
+    //
+    //  The default nodes and links are the empty array, and when the layout
+    //  is started, the internal alpha cooling parameter is set to 0.1
+    //
+    // A few of the parameters are explained here:
+    //   charge:
     //      (Negative) charge determines repulsion
     //      Effect is opposite of gravity (between two nodes)
-    // linkStrength:
+    //   linkStrength:
     //      pulls two negative charges closer together
     //      0.1 keeps them far apart
-    // friction:
+    //   friction:
     //      Makes the graph movement stiffer & more resistant to change when disturbed,
-    // gravity:
+    //   gravity:
     //      Global gravity force: pulls everything towards the center
     //         - If set to 1.0, everything becomes one big concentrated blob
     //         - If set to 0.0, blobs of nodes remain detached / outside the canvas
-    //      default is about 0.1
+    //      default is 0.1
     // linkDistance:
     // chargeDistance:
     // theta:
-    .charge(-45)
+    // .charge(-45)
+    .charge(-65)
     .linkDistance(LinkLen)
     // .linkStrength(1.0)
     // .friction(0.9)
     // .chargeDistance(Width/2.0)
-    .theta(0.7)
+    .theta(0.3)
     .gravity(0.15)
     ;
 

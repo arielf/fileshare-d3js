@@ -63,6 +63,12 @@ to a high value, the forces increase, and the graph gradually
 settles into a new state of equilibrium as the time-decay parameter
 re-converges towards zero.
 
+The algorithm used to go from the initial state to equilibrium/stability
+is called [Verlet integration](https://en.wikipedia.org/wiki/Verlet_integration)
+and is described as a "numerical method used to integrate Newton's
+equations of motion."
+
+
 ## Why is a force-directed graph valuable?
 
 The biggest value of a force-directed visualization is that
