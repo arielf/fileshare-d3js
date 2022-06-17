@@ -43,7 +43,7 @@ All data is anonymized. No actual user/file names are exposed.
 
 ## What exactly is a force-directed graph?
 
-The forces that make this graph self-organize are very much like the
+The forces that make this graph self-organize are somewhat like the
 negative and positive charges in polar molecules. E.g. in a water
 (`H2O`) molecule, there's a 104.5 &deg; (less than 180 &deg;) angle
 between the two `H-0-H` covalent bonds. The asymmetry makes each
@@ -62,6 +62,10 @@ Whenever disturbed, the time-decay parameter is reinitialized
 to a high value, the forces increase, and the graph gradually
 settles into a new state of equilibrium as the time-decay parameter
 re-converges towards zero.
+
+The settling into equilibrium is very similar to a typical
+machine learning training process, a gradient descent algo,
+iteratively minimizing some loss/error function until convergence.
 
 The algorithm used to go from the initial state to equilibrium/stability
 is called [Verlet integration](https://en.wikipedia.org/wiki/Verlet_integration)
