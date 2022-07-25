@@ -134,13 +134,14 @@ insight and understanding.
 
 ## Demo in a different domain: Beatles songs by year
 
-[Beatles songs interactive Demo (can't embed, so not on github)](https://yendor.com/Beatles/)
+[Beatles songs by year interactive demo (can't embed, so not on github)](https://yendor.com/Beatles/)
 
 ## Credits
 
 Mike Bostock, [observablehq.com](https://observablehq.com/) and all
 contributors to the D3js framework.
 
-I started from some of the examples published, used different datasets,
-separate the raw data from the code, and customize parameters
-for better effect.
+I started from some of the
+[Force directed graph published examples](https://observablehq.com/@d3/force-directed-graph).
+Used a different dataset; separated the raw data from the code,
+and customized some parameters for better effect.
