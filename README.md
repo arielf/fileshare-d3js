@@ -15,13 +15,14 @@ All data is anonymized. No actual user/file names are exposed.
 
 [Interactive Demo (can't embed, so not on github)](https://finance.yendor.com/ML/fileshare-d3js/)
 
+
 ## Demo source code:
 
   - [index.html](./index.html)
   - [force-directed-graph.js](./force-directed-graph.js)
 
 
-## Graphical elements
+## Graphical elements of file sharing
 
   - Blue circles represent files
   - Black circles represent users
@@ -131,10 +132,15 @@ insight and understanding.
   - The demo uses an old version (v3) of D3js, that is incompatible
   with the current (v7) version.
 
+## Demo in a different domain: Beatles songs by year
+
+[Beatles songs interactive Demo (can't embed, so not on github)](https://yendor.com/Beatles/)
+
 ## Credits
 
 Mike Bostock, [observablehq.com](https://observablehq.com/) and all
-contributors to the D3js framework. All I did here is adapt one of their
-examples to a different dataset, separate the raw data from the code,
-and customize some parameters for better effect.
+contributors to the D3js framework.
 
+I started from some of the examples published, used different datasets,
+separate the raw data from the code, and customize parameters
+for better effect.
