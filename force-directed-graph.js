@@ -1,14 +1,29 @@
 "use strict";
-var Width = 1024, Height = 1024;
-var LinkLen = Width/60;
+var margin = {top: 0, right: 0, bottom: 0, left: 0};
+
+//
+// extra_XY to account for side-margins + top div's -> avoid scrollbars
+//
+const extra_height = 120;
+const extra_width = 20;
+var width = globalThis.innerWidth - extra_width;
+var height = globalThis.innerHeight - extra_height;
+
+// FDG params
+const Friction = 0.9;
+const Charge = -100;
+const LinkStrength = 2.0;
+const Theta = 0.3;
+const Gravity = 0.40;
+const LinkLen = width/50;
 
 // Bad* vars are there to highlight users with a different group
 // among file-sharers (group == 3 in datobj.json)
 
 // Links style
 var LinkColor = "#333333";
-var LinkWidth = 2;
 var BadLinkColor = "#ff0000";
+var LinkWidth = 2;
 var BadLinkWidth = 6;
 
 // Nodes style
@@ -19,10 +34,6 @@ var FileNodeColor = "#00aaff";
 var UserNodeColor = "#000000";
 var BadUserNodeColor = "#ff0000";
 var UndefUserNodeColor = "#ff00ff";
-
-var margin = {top: 0, right: 0, bottom: 0, left: 0},
-    width = Width - margin.left - margin.right,
-    height = Height - margin.top - margin.bottom;
 
 var bad_app = function(d) {
     // A specific app: <int> value in the data
@@ -39,7 +50,7 @@ var app_color = function(d) {
 };
 
 var force = d3.layout.force()
-    .size([Width, Height])
+    .size([width, height])
     //
     //  Official docs:
     //      https://github.com/d3/d3-force/tree/v3.0.0
@@ -66,41 +77,40 @@ var force = d3.layout.force()
     //      pulls two negative charges closer together
     //      0.1 keeps them far apart
     //   friction:
-    //      Makes the graph movement stiffer & more resistant to change when disturbed,
+    //      Makes the graph movement stiffer & more resistant to change
+    //      when disturbed. If too high, may fail to converge!
     //   gravity:
     //      Global gravity force: pulls everything towards the center
-    //         - If set to 1.0, everything becomes one big concentrated blob
-    //         - If set to 0.0, blobs of nodes remain detached / outside the canvas
+    //      - If set to 1.0, everything becomes one big concentrated blob
+    //      - If set to 0.0, blobs of nodes remain detached / outside the canvas
     //      default is 0.1
-    // linkDistance:
-    // chargeDistance:
-    // theta:
-    // .charge(-45)
-    .charge(-65)
+    .charge(Charge)
     .linkDistance(LinkLen)
-    // .linkStrength(1.0)
-    // .friction(0.9)
-    // .chargeDistance(Width/2.0)
-    .theta(0.3)
-    .gravity(0.15)
+    .linkStrength(LinkStrength)
+    .friction(Friction)
+    .chargeDistance(width/2.0)
+    .theta(Theta)
+    .gravity(Gravity)
     ;
-
-// define the div for tooltips
-var div = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
 
 // Add the SVG canvas
-var svg = d3.select("body")
-    .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-        .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")")
+var canvasDiv = document.getElementById('canvas');
+
+// define the div for tooltips
+var div = d3.select('#canvas').append('div')
+    .attr('class', 'tooltip')
+    .style('opacity', 0);
+
+var svg = d3.select('#canvas')
+    .append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+    .append('g')
+        .attr('transform',
+              'translate(' + margin.left + ',' + margin.top + ')')
     ;
 
-d3.json("datobj.json", function(error, graph) {
+d3.json('datobj.json', function(error, graph) {
     if (error) {
         alert(error);
         throw error;
@@ -111,61 +121,61 @@ d3.json("datobj.json", function(error, graph) {
         .links(graph.links)
         .start();
 
-  var link = svg.selectAll(".link")
+  var link = svg.selectAll('.link')
       .data(graph.links)
-      .enter().append("line")
-      .attr("class", "link")
-      .style("stroke", function(d) { return app_color(d) })
-      .style("stroke-width", function(d) { return app_width(d) })
-      .style("fill", function(d) { return app_color(d) })
+      .enter().append('line')
+      .attr('class', 'link')
+      .style('stroke', function(d) { return app_color(d) })
+      .style('stroke-width', function(d) { return app_width(d) })
+      .style('fill', function(d) { return app_color(d) })
       ;
 
-  var node = svg.selectAll(".node")
+  var node = svg.selectAll('.node')
     .data(graph.nodes)
-    .enter().append("circle")
-    .attr("class", "node")
-    .attr("r", function(d) {
-            if (d.group == 1) return UserNodeSize;
-            if (d.group == 2) return FileNodeSize;
-            if (d.group == 3) return BadUserNodeSize;
-            return BadUserNodeSize*2;
+    .enter().append('circle')
+    // .attr('class', 'node')
+    .attr('class', function(d) {
+        if (d.group == 1) return 'user';
+        if (d.group == 2) return 'file';
+        if (d.group == 3) return 'extuser';
+        return 'unknown';
     })
-    .style("fill", function(d) {
-            if (d.group == 1) return UserNodeColor;
-            if (d.group == 2) return FileNodeColor;
-            if (d.group == 3) return BadUserNodeColor;
-            return UndefUserNodeColor;
+    .attr('r', function(d) {
+        if (d.group == 1) return UserNodeSize;
+        if (d.group == 2) return FileNodeSize;
+        if (d.group == 3) return BadUserNodeSize;
+        return BadUserNodeSize*2;
     })
-    .on("mouseover", function(d) {
+    .on('mouseover', function(d) {
         div.transition()
             .delay(0)
             .duration(0)
-            .style("opacity", 1.0)
+            .style('opacity', 1.0)
         div.html(d.name)
-            .style("left", (d3.event.pageX + 14) + "px")
-            .style("top", (d3.event.pageY - 30) + "px")
+            .style('left', (d3.event.pageX + 14) + 'px')
+            .style('top', (d3.event.pageY - 30) + 'px')
             ;
     })
-    .on("mouseout", function(d) {
+    .on('mouseout', function(d) {
         div.transition()
             .delay(0)
             .duration(0)
-            .style("opacity", 0.0)
+            .style('opacity', 0.0)
         ;
     })
 
     .call(force.drag)
     ;
 
-    force.on("tick", function() {
-        link.attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; })
+    force.on('tick', function() {
+        link.attr('x1', function(d) { return d.source.x; })
+            .attr('y1', function(d) { return d.source.y; })
+            .attr('x2', function(d) { return d.target.x; })
+            .attr('y2', function(d) { return d.target.y; })
             ;
 
-    node.attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
+    node.attr('cx', function(d) { return d.x; })
+        .attr('cy', function(d) { return d.y; })
         ;
     });
 });

@@ -1,40 +1,98 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html>
+<meta charset="utf-8" />
 <style>
 body {
+    position: absolute;
+    top: 0%;
     font-size: 48px;
     font-family: sans-serif;
     font-weight: bold;
-    // border-style: solid;
-    // border-width: 1px;
-    // border-color: #555555;
 }
-
+div#header {
+    position: relative;
+    top: 0%;
+    width: 100%;
+    text-align: center;
+    padding: 0px;
+    font-family: FreeSans;
+    font: 24px sans-serif;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+div#help {
+    position: relative;
+    top: 1px;
+    width: 100%;
+    text-align: center;
+    padding: 0px;
+    font: 16px sans-serif;
+    color: black;
+    background-color: #eeeeee;
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+}
+div#canvas {
+    position: relative;
+    top: 2px;
+    padding: 0px;
+    border-radius: 10px;
+    background-color: #d7d7d7;
+    /* font: 20px sans-serif; */
+    font-weight: bold;
+}
+.maindiv {
+    /* position: static; */
+    /* margin: auto; */
+    /* width: 100%; */
+    /* border: 0px solid #000000; */
+    /* padding: 0px; */
+}
 .node {
     stroke: #ffffff;
     stroke-width: 2.0px;
     stroke-opacity: 1.0;
 }
-
 .link {
-    stroke: #777777;
+    stroke: #333333;
+    stroke-width: 2.0px;
     stroke-opacity: 0.7;
 }
-
-/*
-path {
-    stroke: blue;
-    stroke-width: 2;
-    fill: none;
+.file {
+    stroke: #ffffff;
+    fill: #00aaff;
+    stroke-width: 2.0px;
+    stroke-opacity: 1.0;
+    color: #00aaff;
 }
-
-.axis path, .axis line {
-    fill: none;
-    stroke: grey;
-    stroke-width: 1;
-    shape-rendering: crispEdges;
+.user {
+    stroke: #ffffff;
+    fill: black;
+    stroke-width: 2.0px;
+    stroke-opacity: 1.0;
+    color: black;
 }
-*/
+.extuser {
+    stroke: #ffffff;
+    fill: red;
+    stroke-width: 2.0px;
+    stroke-opacity: 1.0;
+    color: red;
+}
+.badapp {
+    stroke: red;
+    fill: red;
+    stroke-width: 6.0px;
+    stroke-opacity: 1.0;
+    color: red;
+}
 
 div.tooltip {
     position: absolute;
@@ -58,8 +116,25 @@ div.tooltip {
 <script type="text/javascript" src="d3.v3.min.js" charset="utf-8"></script>
 
 <body>
-<script type="text/javascript"
-        src="force-directed-graph.js"
-        charset="utf-8">
-</script>
+  <div id="header" class="maindiv">
+    Cloud events: file sharing (anonymized)
+  </div>
+
+  <div id="help" class="maindiv">
+      <b>Hover</b> over objects for details
+        &nbsp; &nbsp;
+      <b>drag</b> to move/rearrange</br>
+
+      <b>
+      <span class="file">&nbsp; &#11044; File &nbsp;</span>&nbsp;
+      <span class="user">&nbsp; &#11044; User &nbsp;</span>&nbsp;
+      <span class="extuser">&nbsp; &#11044; External User &nbsp;</span>&nbsp;
+      <span class="badapp">&nbsp; &#x25ac; Unsanctioned App &nbsp;</span>&nbsp;
+      </b>
+  </div>
+
+  <div id="canvas" class="maindiv">
+    <script src="force-directed-graph.js" charset="utf-8"></script>
+  </div>
 </body>
+</html>
