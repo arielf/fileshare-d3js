@@ -97,9 +97,18 @@ var force = d3.layout.force()
 var canvasDiv = document.getElementById('canvas');
 
 // define the div for tooltips
-var div = d3.select('#canvas').append('div')
+var tooltip = d3.select('#canvas')
+    .append('div')
     .attr('class', 'tooltip')
     .style('opacity', 0);
+
+function tooltip_text(d) {
+    if (d.group == 3) {
+        // A special group
+        return `${d.name}</br>(possible extfiltration)`;
+    }
+    return d.name;
+}
 
 var svg = d3.select('#canvas')
     .append('svg')
@@ -121,51 +130,50 @@ d3.json('datobj.json', function(error, graph) {
         .links(graph.links)
         .start();
 
-  var link = svg.selectAll('.link')
-      .data(graph.links)
-      .enter().append('line')
-      .attr('class', 'link')
-      .style('stroke', function(d) { return app_color(d) })
-      .style('stroke-width', function(d) { return app_width(d) })
-      .style('fill', function(d) { return app_color(d) })
-      ;
+    var link = svg.selectAll('.link')
+        .data(graph.links)
+        .enter().append('line')
+        .attr('class', 'link')
+        .style('stroke', function(d) { return app_color(d) })
+        .style('stroke-width', function(d) { return app_width(d) })
+        .style('fill', function(d) { return app_color(d) });
 
-  var node = svg.selectAll('.node')
-    .data(graph.nodes)
-    .enter().append('circle')
-    // .attr('class', 'node')
-    .attr('class', function(d) {
-        if (d.group == 1) return 'user';
-        if (d.group == 2) return 'file';
-        if (d.group == 3) return 'extuser';
-        return 'unknown';
-    })
-    .attr('r', function(d) {
-        if (d.group == 1) return UserNodeSize;
-        if (d.group == 2) return FileNodeSize;
-        if (d.group == 3) return BadUserNodeSize;
-        return BadUserNodeSize*2;
-    })
-    .on('mouseover', function(d) {
-        div.transition()
-            .delay(0)
-            .duration(0)
-            .style('opacity', 1.0)
-        div.html(d.name)
-            .style('left', (d3.event.pageX + 14) + 'px')
-            .style('top', (d3.event.pageY - 30) + 'px')
+    var node = svg.selectAll('.node')
+        .data(graph.nodes)
+        .enter().append('circle')
+        // .attr('class', 'node')
+        .attr('class', function(d) {
+            if (d.group == 1) return 'user';
+            if (d.group == 2) return 'file';
+            if (d.group == 3) return 'extuser';
+            return 'unknown';
+        })
+        .attr('r', function(d) {
+            if (d.group == 1) return UserNodeSize;
+            if (d.group == 2) return FileNodeSize;
+            if (d.group == 3) return BadUserNodeSize;
+            return BadUserNodeSize*2;
+        })
+        .on('mouseover', function(d) {
+            tooltip.transition()
+                .delay(0)
+                .duration(0)
+                .style('opacity', 1.0)
+            tooltip.html(tooltip_text(d))
+                .style('left', (d3.event.pageX + 14) + 'px')
+                .style('top', (d3.event.pageY - 30) + 'px')
             ;
-    })
-    .on('mouseout', function(d) {
-        div.transition()
-            .delay(0)
-            .duration(0)
-            .style('opacity', 0.0)
-        ;
-    })
+        })
+        .on('mouseout', function(d) {
+            tooltip.transition()
+                .delay(0)
+                .duration(0)
+                .style('opacity', 0.0)
+            ;
+        })
 
-    .call(force.drag)
-    ;
+        .call(force.drag)
+        ;
 
     force.on('tick', function() {
         link.attr('x1', function(d) { return d.source.x; })
