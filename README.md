@@ -110,7 +110,10 @@ insight and understanding.
   - Sub-graphs may represent sub-departments (or users who like to share with like minded colleagues)
   - Red circles may hint of a potential ex-filtration of data
   - Red links represent abnormal (non-sanctioned) sharing cloud apps
-  - There's an isolated file (File 499), likely a data issue
+  - There's one isolated file (File 499), this is a data issue. In a
+    picture, data-issues are often much easier to detect than by looking
+    at the raw data. See also:
+    [A picture is worth a 1000 words.](https://github.com/arielf/a-picture-worth)
 
 ## Random notes
 
