@@ -24,14 +24,14 @@ All data is anonymized. No actual user/file names are exposed.
 
 ## Graphical elements of file sharing
 
-  - Blue circles represent files
-  - Black circles represent users
+  - Blue circle nodes represent files
+  - Black circle nodes represent users
   - Red circles represent users outside the organization (email-id in another domain)
-  - Edges are always between a user and a (shared) file
-  - A red & thick edge represents sharing via an unusual/rare application
+  - Edges (links between nodes) are always between a user and a (shared) file
   - Each user/file has a unique id and appears exactly once in the chart
   - The entities (file, user) are what the forces act on
-  - The relations between the entities are the forces acting on entities
+  - The relations (links) between the entities (nodes) may have additional metadata describing the sharing event, e.g the cloud-application used for sharing
+  - A red & thick edge represents sharing via an unusual/rare application
 
 ## Interacting with the graph
 
